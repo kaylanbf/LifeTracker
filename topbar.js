@@ -103,6 +103,21 @@
   transition: background 0.15s, color 0.15s;
 }
 .topbar-settings-btn:hover { background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.9); }
+.topbar-theme-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.55);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, color 0.15s;
+}
+.topbar-theme-btn:hover { background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.9); }
+.topbar-theme-btn .theme-icon-light { display: none; }
+html.light .topbar-theme-btn .theme-icon-dark { display: none; }
+html.light .topbar-theme-btn .theme-icon-light { display: inline-flex; }
 /* ---- Light mode global overrides ---- */
 html.light, html.light body { background: #F0F0F2; }
 html.light { --text-primary: #0A0A0B; --text-secondary: #4A4845; --text-tertiary: #8A8884; color-scheme: light; }
@@ -110,8 +125,8 @@ html.light body::before, html.light body::after { opacity: 0.12; }
 html.light .topbar { background: #FFFFFF; border-bottom-color: rgba(0,0,0,0.08); }
 html.light .topbar-water-pill { background: rgba(125,211,252,0.12); border-color: rgba(125,211,252,0.28); color: #0A0A0B; }
 html.light .topbar-pill-count { color: #0A0A0B; }
-html.light .topbar-finance-btn, html.light .topbar-settings-btn { border-color: rgba(0,0,0,0.10); background: rgba(0,0,0,0.03); color: #4A4845; }
-html.light .topbar-finance-btn:hover, html.light .topbar-settings-btn:hover { background: rgba(0,0,0,0.07); color: #0A0A0B; }
+html.light .topbar-finance-btn, html.light .topbar-settings-btn, html.light .topbar-theme-btn { border-color: rgba(0,0,0,0.10); background: rgba(0,0,0,0.03); color: #4A4845; }
+html.light .topbar-finance-btn:hover, html.light .topbar-settings-btn:hover, html.light .topbar-theme-btn:hover { background: rgba(0,0,0,0.07); color: #0A0A0B; }
 html.light .bottombar { background: #FFFFFF; border-top: 1px solid rgba(0,0,0,0.08); }
 html.light .bottombar-tab { color: #8A8884; }
 html.light .bottombar-tab.active { color: #0A0A0B; }
@@ -164,7 +179,7 @@ body.has-bottombar {
   .topbar-water-pill { padding: 8px 11px; gap: 6px; }
   .topbar-pill-count { font-size: 12px; }
   .topbar-water-add { width: 40px; font-size: 18px; }
-  .topbar-finance-btn, .topbar-settings-btn { width: 40px; height: 38px; }
+  .topbar-finance-btn, .topbar-settings-btn, .topbar-theme-btn { width: 40px; height: 38px; }
   .bottombar-tab-icon { font-size: 22px; }
   .bottombar-tab { font-size: 10px; }
 }
@@ -230,6 +245,10 @@ body.topbar-modal-open {
   </a>
   <button class="topbar-settings-btn" id="topbarSettingsBtn" type="button" aria-label="Settings">
     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+  </button>
+  <button class="topbar-theme-btn" id="topbarThemeBtn" type="button" aria-label="Toggle theme">
+    <span class="theme-icon-dark"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z"/></svg></span>
+    <span class="theme-icon-light"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg></span>
   </button>
 </header>
 `;
@@ -505,6 +524,14 @@ body.topbar-modal-open {
 
     if (localStorage.getItem('dashboard_theme') === 'light') {
       document.documentElement.classList.add('light');
+    }
+
+    const themeBtn = document.getElementById('topbarThemeBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const isLight = document.documentElement.classList.toggle('light');
+        localStorage.setItem('dashboard_theme', isLight ? 'light' : 'dark');
+      });
     }
 
     render();
