@@ -2535,7 +2535,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
       const editBtn = document.createElement('button');
       editBtn.title = 'Edit';
       editBtn.style.cssText = 'background:transparent;border:1px solid rgba(255,255,255,0.10);color:var(--text-tertiary);cursor:pointer;font-size:12px;padding:3px 7px;border-radius:5px;font-family:inherit;line-height:1';
-      editBtn.textContent = '✏';
+      editBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>';
       editBtn.addEventListener('click', () => editSubInline(idx));
       const del = document.createElement('button');
       del.title = 'Delete';
@@ -2558,7 +2558,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         const arr = storeGet('subs') || [];
         if (!arr[i]) return;
         if (!arr[i].autoDeduct && (!arr[i].fromCat || !arr[i].fromAccount)) {
-          alert('Pick a "From account" first (use the ✏ edit button) so the deduction knows where to take the money from.');
+          alert('Pick a "From account" first (use the Edit button) so the deduction knows where to take the money from.');
           return;
         }
         arr[i].autoDeduct = !arr[i].autoDeduct;

@@ -213,15 +213,15 @@ body.topbar-modal-open {
   const bottombarHtml = `
 <nav class="bottombar" id="bottombar" role="navigation" aria-label="Main tabs">
   <a href="index.html" class="bottombar-tab" data-page="main">
-    <span class="bottombar-tab-icon">🏠</span>
+    <span class="bottombar-tab-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span>
     <span>Main</span>
   </a>
   <a href="health.html" class="bottombar-tab" data-page="health">
-    <span class="bottombar-tab-icon">💊</span>
+    <span class="bottombar-tab-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true"><rect x="3.5" y="9" width="17" height="6" rx="3" transform="rotate(45 12 12)"/></svg></span>
     <span>Health</span>
   </a>
   <a href="gym.html" class="bottombar-tab" data-page="fitness">
-    <span class="bottombar-tab-icon">💪</span>
+    <span class="bottombar-tab-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true"><rect x="1" y="7" width="4" height="10" rx="1.5"/><rect x="19" y="7" width="4" height="10" rx="1.5"/><rect x="5" y="9.5" width="2" height="5" rx="0.5"/><rect x="17" y="9.5" width="2" height="5" rx="0.5"/><rect x="7" y="11" width="10" height="2"/></svg></span>
     <span>Fitness</span>
   </a>
 </nav>
