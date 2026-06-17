@@ -4,6 +4,7 @@
 <script src="lock.js"></script>
 <script src="/api/config"></script>
 <meta charset="UTF-8">
+<script>if(localStorage.getItem('dashboard_theme')==='light')document.documentElement.classList.add('light');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0b">
 <title>Progressive Overload Coach</title>
@@ -1264,6 +1265,49 @@ img, video, canvas, svg { max-width: 100%; }
 }
 
 .hidden { display: none !important; }
+
+/* ---- Light mode ---- */
+html.light {
+  --bg: #F0F0F2;
+  --bg-card: #FFFFFF;
+  --text-1: #0A0A0B;
+  --text-2: rgba(0,0,0,0.58);
+  --text-3: rgba(0,0,0,0.40);
+  --text-4: rgba(0,0,0,0.24);
+  --border: rgba(0,0,0,0.07);
+  --border-strong: rgba(0,0,0,0.13);
+  --accent: #0A0A0B;
+}
+html.light, html.light body { background: #F0F0F2; color: var(--text-1); }
+html.light .tabbar { background: linear-gradient(180deg, rgba(240,240,242,0) 0%, rgba(240,240,242,0.85) 38%, rgba(240,240,242,0.97) 100%); }
+html.light .tabbar-inner { background: rgba(255,255,255,0.88); border-color: rgba(0,0,0,0.08); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+html.light .tab { color: rgba(0,0,0,0.40); }
+html.light .tab:hover { color: var(--text-1); }
+html.light .tab[aria-current="page"] { color: var(--text-1); background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.10); }
+html.light .po-day-pill { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); color: rgba(0,0,0,0.52); }
+html.light .po-day-pill:hover { background: rgba(0,0,0,0.07); border-color: rgba(0,0,0,0.13); color: var(--text-1); }
+html.light .po-icon-btn { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.09); color: var(--text-2); }
+html.light .po-icon-btn:hover { background: rgba(0,0,0,0.08); color: var(--text-1); }
+html.light .po-seg-btn { color: var(--text-3); }
+html.light .po-seg-btn:hover { background: rgba(0,0,0,0.04); color: var(--text-2); }
+html.light select, html.light .po-select { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.12); color: var(--text-1); }
+html.light select:focus, html.light .po-select:focus { border-color: rgba(0,0,0,0.30); box-shadow: 0 0 0 3px rgba(0,0,0,0.05); }
+html.light .po-btn-icon { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.09); color: var(--text-2); }
+html.light .po-btn-icon:hover { background: rgba(0,0,0,0.08); color: var(--text-1); }
+html.light .po-w-btn { background: rgba(0,0,0,0.04); }
+html.light .po-w-btn:hover { background: rgba(0,0,0,0.09); }
+html.light .po-reps-pill { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); color: var(--text-2); }
+html.light .po-reps-pill:hover { background: rgba(0,0,0,0.08); color: var(--text-1); }
+html.light input[type="number"], html.light .po-weight-input { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.12); color: var(--text-1); }
+html.light input[type="number"]:focus, html.light .po-weight-input:focus { border-color: rgba(0,0,0,0.30); box-shadow: 0 0 0 3px rgba(0,0,0,0.05); }
+html.light .po-ex-row, html.light .po-set-row { background: rgba(0,0,0,0.025); border-color: rgba(0,0,0,0.06); }
+html.light .po-rx-card { background: rgba(0,0,0,0.025); border-color: rgba(0,0,0,0.07); }
+html.light .po-rx-card.po-rx-up { background: linear-gradient(180deg,rgba(110,231,183,0.10),rgba(0,0,0,0.025)); border-color: rgba(110,231,183,0.22); }
+html.light .po-rx-card.po-rx-down { background: linear-gradient(180deg,rgba(255,138,138,0.10),rgba(0,0,0,0.025)); border-color: rgba(255,138,138,0.22); }
+html.light .po-btn-secondary { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.09); color: var(--text-2); }
+html.light .po-btn-secondary:hover { background: rgba(0,0,0,0.08); }
+html.light .wt-locked-check { color: var(--good); }
+html.light .wt-card { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>

@@ -4,6 +4,7 @@
 <script src="lock.js"></script>
 <script src="/api/config"></script>
 <meta charset="UTF-8">
+<script>if(localStorage.getItem('dashboard_theme')==='light')document.documentElement.classList.add('light');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#050506">
 <title>Kaylan's Dashboard</title>
@@ -595,6 +596,35 @@ body::after {
   .gm-card { padding: 16px; }
   .gm-progress-num { font-size: 36px; }
 }
+
+/* ---- Light mode ---- */
+html.light {
+  --text-primary: #0A0A0B;
+  --text-secondary: #4A4845;
+  --text-tertiary: #8A8884;
+}
+html.light, html.light body { background: #F0F0F2; }
+html.light body::before, html.light body::after { opacity: 0.10; }
+html.light .day-ring-track { stroke: rgba(0,0,0,0.10); }
+html.light .day-ring-wrap { background: rgba(255,255,255,0.78); box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
+html.light .goal-ticker {
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.03) 100%);
+  box-shadow: none;
+}
+html.light .goal-ticker::after { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); }
+html.light .goal-ticker-meta { background: rgba(0,0,0,0.06); }
+html.light .gm-card { background: rgba(255,255,255,0.78); border-color: rgba(0,0,0,0.07); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+html.light .gm-input { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.12); color: #0A0A0B; }
+html.light .gm-input:focus { border-color: rgba(0,0,0,0.28); }
+html.light .gm-item { background: rgba(0,0,0,0.025); border-color: rgba(0,0,0,0.06); }
+html.light .gm-item:hover { background: rgba(0,0,0,0.045); }
+html.light .gm-push-btn { background: transparent; border-color: rgba(0,0,0,0.12); color: rgba(0,0,0,0.40); }
+html.light .gm-push-btn:hover { background: rgba(0,0,0,0.04); color: rgba(0,0,0,0.60); }
+html.light .gm-streak-pill { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.09); color: #4A4845; }
+html.light .gm-add-input { background: rgba(255,255,255,0.90); border-color: rgba(0,0,0,0.10); color: #0A0A0B; }
+html.light .gm-add-input::placeholder { color: rgba(0,0,0,0.32); }
+html.light .gm-add-input:focus { border-color: rgba(0,0,0,0.25); box-shadow: 0 0 0 3px rgba(0,0,0,0.04); }
+html.light .gm-section-label { color: rgba(0,0,0,0.40); }
 </style>
 </head>
 <body>
