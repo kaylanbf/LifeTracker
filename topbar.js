@@ -86,15 +86,37 @@
   background: rgba(255, 255, 255, 0.04);
   border-radius: 12px;
   text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
   -webkit-tap-highlight-color: transparent;
-  transition: background 0.15s;
+  transition: background 0.15s, color 0.15s;
 }
-.topbar-finance-btn:hover { background: rgba(255, 255, 255, 0.08); }
-.topbar-finance-icon {
-  font-size: 20px; line-height: 1;
-  filter: grayscale(100%) brightness(1.4);
-  opacity: 0.85;
+.topbar-finance-btn:hover { background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.9); }
+.topbar-settings-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.55);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, color 0.15s;
 }
+.topbar-settings-btn:hover { background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.9); }
+/* ---- Light mode global overrides ---- */
+html.light, html.light body { background: #F0F0F2; }
+html.light { --text-primary: #0A0A0B; --text-secondary: #4A4845; --text-tertiary: #8A8884; color-scheme: light; }
+html.light body::before, html.light body::after { opacity: 0.12; }
+html.light .topbar { background: #FFFFFF; border-bottom-color: rgba(0,0,0,0.08); }
+html.light .topbar-water-pill { background: rgba(125,211,252,0.12); border-color: rgba(125,211,252,0.28); color: #0A0A0B; }
+html.light .topbar-pill-count { color: #0A0A0B; }
+html.light .topbar-finance-btn, html.light .topbar-settings-btn { border-color: rgba(0,0,0,0.10); background: rgba(0,0,0,0.03); color: #4A4845; }
+html.light .topbar-finance-btn:hover, html.light .topbar-settings-btn:hover { background: rgba(0,0,0,0.07); color: #0A0A0B; }
+html.light .bottombar { background: #FFFFFF; border-top: 1px solid rgba(0,0,0,0.08); }
+html.light .bottombar-tab { color: #8A8884; }
+html.light .bottombar-tab.active { color: #0A0A0B; }
+html.light .bottombar-tab-icon { filter: none; opacity: 0.45; }
+html.light .bottombar-tab.active .bottombar-tab-icon { filter: none; opacity: 1; }
 
 /* Bottom tab bar — Instagram-style */
 .bottombar {
@@ -142,8 +164,7 @@ body.has-bottombar {
   .topbar-water-pill { padding: 8px 11px; gap: 6px; }
   .topbar-pill-count { font-size: 12px; }
   .topbar-water-add { width: 40px; font-size: 18px; }
-  .topbar-finance-btn { width: 40px; height: 38px; }
-  .topbar-finance-icon { font-size: 18px; }
+  .topbar-finance-btn, .topbar-settings-btn { width: 40px; height: 38px; }
   .bottombar-tab-icon { font-size: 22px; }
   .bottombar-tab { font-size: 10px; }
 }
@@ -205,8 +226,11 @@ body.topbar-modal-open {
     <button class="topbar-water-add" id="topbarWaterAdd" aria-label="Log one drink" type="button">+</button>
   </div>
   <a href="finance.html" class="topbar-finance-btn" id="topbarFinance" aria-label="Finance">
-    <span class="topbar-finance-icon">📊</span>
+    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><rect x="2" y="13" width="5" height="9" rx="1"/><rect x="9.5" y="7" width="5" height="15" rx="1"/><rect x="17" y="3" width="5" height="19" rx="1"/></svg>
   </a>
+  <button class="topbar-settings-btn" id="topbarSettingsBtn" type="button" aria-label="Settings">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+  </button>
 </header>
 `;
 
@@ -467,6 +491,22 @@ body.topbar-modal-open {
     injectStyleAndHTML();
     const btn = document.getElementById('topbarWaterAdd');
     if (btn) btn.addEventListener('click', (e) => { e.preventDefault(); addWater(); });
+
+    const settingsBtn = document.getElementById('topbarSettingsBtn');
+    if (settingsBtn) {
+      settingsBtn.addEventListener('click', () => {
+        if (document.getElementById('settingsBg')) {
+          document.dispatchEvent(new CustomEvent('dashboard-open-settings'));
+        } else {
+          window.location.href = 'index.html#settings';
+        }
+      });
+    }
+
+    if (localStorage.getItem('dashboard_theme') === 'light') {
+      document.documentElement.classList.add('light');
+    }
+
     render();
     lockGestures();
     startModalLock();
